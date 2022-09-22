@@ -1,0 +1,112 @@
+name: realmonitor
+description: Realmonitor
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.1'
+  flutter: '>=3.3.2'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  intl: ^0.17.0
+  flutter_svg: ^1.1.5
+  flutter_bloc: ^8.1.1
+  adaptive_theme: ^3.1.1
+  quiver: ^3.1.0
+  drift: ^2.1.0
+  sqlite3_flutter_libs: ^0.5.10
+  path: ^1.8.2
+  path_provider: ^2.0.11
+  async: ^2.9.0
+  collection: ^1.16.0
+  recase: ^4.0.0
+
+dev_dependencies:
+  drift_dev: ^2.1.0
+  build_runner: ^2.2.1
+  flutter_gen_runner: ^4.3.0
+  icons_launcher: ^2.0.5
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+  
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/nunito/Nunito-Regular.ttf
+        - asset: assets/fonts/nunito/Nunito-ExtraLight.ttf
+          weight: 200
+          style: normal
+        - asset: assets/fonts/nunito/Nunito-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/nunito/Nunito-Light.ttf
+          weight: 300
+          style: normal
+        - asset: assets/fonts/nunito/Nunito-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/nunito/Nunito-Regular.ttf
+          weight: 400
+          style: normal
+        - asset: assets/fonts/nunito/Nunito-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/nunito/Nunito-Medium.ttf
+          weight: 500
+          style: normal
+        - asset: assets/fonts/nunito/Nunito-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/nunito/Nunito-SemiBold.ttf
+          weight: 600
+          style: normal
+        - asset: assets/fonts/nunito/Nunito-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/nunito/Nunito-Bold.ttf
+          weight: 700
+          style: normal
+        - asset: assets/fonts/nunito/Nunito-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/nunito/Nunito-ExtraBold.ttf
+          weight: 800
+          style: normal
+        - asset: assets/fonts/nunito/Nunito-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/nunito/Nunito-Black.ttf
+          weight: 900
+          style: normal
+        - asset: assets/fonts/nunito/Nunito-BlackItalic.ttf
+          weight: 900
+          style: italic
+
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+
+  integrations:
+    flutter_svg: true
+    flare_flutter: false
+    rive: false
+
+icons_launcher:
+  image_path: 'assets/images/icon.png'
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true

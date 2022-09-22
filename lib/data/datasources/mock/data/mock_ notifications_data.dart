@@ -1,0 +1,182 @@
+const mockNotificationsSource = [
+  '''{
+ "isNotificationEnabled":true,
+ "privateAdvertisersOnly":false,
+ "filterOutSuspiciousItems":true,
+ "onlyPolisWithPictures":true,
+ "nameSpace":"hu",
+ "locations":[
+    {
+       "accessTokens":[
+          "v1-NGjMb89DhXVjdFH2qe2Y9s9nivaCNaDNCDmkvsdRhok"
+       ],
+       "adminLevels":{
+          "6":"Nógrád megye",
+          "8":"Zabar"
+       },
+       "nameSpace":"hu",
+       "ids":[
+          "ChIJG2dAGsJwQEcRAHgeDCnEAAQ"
+       ]
+    }
+ ],
+ "name":"Értesítés zabari ház",
+ "assignmentType":"FOR_SALE",
+ "estateTypes":[
+    "HOUSE"
+ ],
+ "createTime":1658740743732,
+ "usesUmbrella":true,
+ "id":1,
+ "minPrice":69000000,
+ "maxPrice":420000000,
+ "minFloorArea":80,
+ "maxFloorArea":null,
+ "minUnitPrice":null,
+ "maxUnitPrice":null
+}''',
+  '''{
+ "isNotificationEnabled":true,
+ "privateAdvertisersOnly":false,
+ "filterOutSuspiciousItems":true,
+ "onlyPolisWithPictures":true,
+ "nameSpace":"hu",
+ "locations":[
+    {
+       "accessTokens":[
+          "v1-NGjMb89DhXVjdFH2qe2Y9s9nivaCNaDNCDmkvsdRhok"
+       ],
+       "adminLevels":{
+          "6":"Győr-Moson-Sopron megye",
+          "8":"Sopron"
+       },
+       "nameSpace":"hu",
+       "ids":[
+          "ChIJG2dAGsJwQEcRAHgeDCnEAAQ"
+       ]
+    }
+ ],
+ "name":"Soproni eladó ház",
+ "assignmentType":"FOR_SALE",
+ "estateTypes":[
+    "HOUSE"
+ ],
+ "createTime":1658740743732,
+ "usesUmbrella":true,
+ "id":2,
+ "minPrice":69000000,
+ "maxPrice":null,
+ "minFloorArea":null,
+ "maxFloorArea":null,
+ "minUnitPrice":null,
+ "maxUnitPrice":null
+}''',
+  '''{
+ "isNotificationEnabled":false,
+ "privateAdvertisersOnly":false,
+ "filterOutSuspiciousItems":true,
+ "onlyPolisWithPictures":true,
+ "nameSpace":"hu",
+ "locations":[
+    {
+       "accessTokens":[
+          "v1-NGjMb89DhXVjdFH2qe2Y9s9nivaCNaDNCDmkvsdRhok"
+       ],
+       "adminLevels":{
+          "6":"Győr-Moson-Sopron megye",
+          "8":"Győr"
+       },
+       "nameSpace":"hu",
+       "ids":[
+          "ChIJG2dAGsJwQEcRAHgeDCnEAAQ"
+       ]
+    }
+ ],
+ "name":"Eladó győri lakás nagyon hosszú névvel ami nagy valószínűséggel nem fér el",
+ "assignmentType":"FOR_SALE",
+ "estateTypes":[
+    "FLAT"
+ ],
+ "createTime":1658740743732,
+ "usesUmbrella":true,
+ "id":3,
+ "minPrice":null,
+ "maxPrice":null,
+ "minFloorArea":null,
+ "maxFloorArea":300,
+ "minUnitPrice":null,
+ "maxUnitPrice":null
+}''',
+  '''{
+ "isNotificationEnabled":false,
+ "privateAdvertisersOnly":false,
+ "filterOutSuspiciousItems":true,
+ "onlyPolisWithPictures":true,
+ "nameSpace":"hu",
+ "locations":[
+{
+       "accessTokens":[
+          "v1-NGjMb89DhXVjdFH2qe2Y9s9nivaCNaDNCDmkvsdRhok"
+       ],
+       "adminLevels":{
+          "6":"Budapest",
+          "8":"XI. kerület"
+       },
+       "nameSpace":"hu",
+       "ids":[
+          "ChIJG2dAGsJwQEcRAHgeDCnEAAQ"
+       ]
+    }
+ ],
+ "name":"Kiadó XI. kerületi lakás vagy ház",
+ "assignmentType":"FOR_RENT",
+ "estateTypes":[
+    "HOUSE", "FLAT"
+ ],
+ "createTime":1658740743732,
+ "usesUmbrella":true,
+ "id":4,
+ "minPrice":69000000,
+ "maxPrice":420000000,
+ "minFloorArea":80,
+ "maxFloorArea":200,
+ "minUnitPrice":null,
+ "maxUnitPrice":null
+}''',
+  '''{
+ "isNotificationEnabled":true,
+ "privateAdvertisersOnly":false,
+ "filterOutSuspiciousItems":true,
+ "onlyPolisWithPictures":true,
+ "nameSpace":"hu",
+ "locations":[
+    {
+       "accessTokens":[
+          "v1-NGjMb89DhXVjdFH2qe2Y9s9nivaCNaDNCDmkvsdRhok"
+       ],
+       "adminLevels":{
+          "6":"Budapest",
+          "8":"I. kerület"
+       },
+       "nameSpace":"hu",
+       "ids":[
+          "ChIJG2dAGsJwQEcRAHgeDCnEAAQ"
+       ]
+    }
+ ],
+ "name":"Kiadó I. kerületi lakás",
+ "assignmentType":"FOR_RENT",
+ "estateTypes":[
+    "FLAT"
+ ],
+ "createTime":1658740743732,
+ "usesUmbrella":true,
+ "id":5,
+ "minPrice":69000000,
+ "maxPrice":420000000,
+ "minFloorArea":null,
+ "maxFloorArea":100,
+ "minUnitPrice":null,
+ "maxUnitPrice":null
+}''',
+];
