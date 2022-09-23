@@ -1,8 +1,7 @@
 import 'package:meta/meta.dart';
 
 @immutable
-abstract class Country {
+abstract class County {
   abstract final int id;
-  abstract final String iso;
   abstract final String name;
 }

@@ -40,7 +40,7 @@ class _InfoModel {
         notif.minPrice.divideByMillion, notif.maxPrice.divideByMillion);
     final floor = printBounds(notif.minFloorArea, notif.maxFloorArea);
     return _InfoModel._(
-      location: '${notif.city.name}, ${notif.city.country.name}',
+      location: '${notif.city.name}, ${notif.city.county.name}',
       price: price != null ? '$price mFt' : null,
       floorSize: floor != null ? '$floor m\u00B2' : null,
     );

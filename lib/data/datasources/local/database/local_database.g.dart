@@ -7,34 +7,30 @@ part of 'local_database.dart';
 // **************************************************************************
 
 // ignore_for_file: type=lint
-class CountryData extends DataClass implements Insertable<CountryData> {
+class CountyData extends DataClass implements Insertable<CountyData> {
   final int id;
-  final String iso;
   final String name;
-  const CountryData({required this.id, required this.iso, required this.name});
+  const CountyData({required this.id, required this.name});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
-    map['iso'] = Variable<String>(iso);
     map['name'] = Variable<String>(name);
     return map;
   }
 
-  CountryDataCompanion toCompanion(bool nullToAbsent) {
-    return CountryDataCompanion(
+  CountyDataCompanion toCompanion(bool nullToAbsent) {
+    return CountyDataCompanion(
       id: Value(id),
-      iso: Value(iso),
       name: Value(name),
     );
   }
 
-  factory CountryData.fromJson(Map<String, dynamic> json,
+  factory CountyData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return CountryData(
+    return CountyData(
       id: serializer.fromJson<int>(json['id']),
-      iso: serializer.fromJson<String>(json['iso']),
       name: serializer.fromJson<String>(json['name']),
     );
   }
@@ -43,69 +39,55 @@ class CountryData extends DataClass implements Insertable<CountryData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
-      'iso': serializer.toJson<String>(iso),
       'name': serializer.toJson<String>(name),
     };
   }
 
-  CountryData copyWith({int? id, String? iso, String? name}) => CountryData(
+  CountyData copyWith({int? id, String? name}) => CountyData(
         id: id ?? this.id,
-        iso: iso ?? this.iso,
         name: name ?? this.name,
       );
   @override
   String toString() {
-    return (StringBuffer('CountryData(')
+    return (StringBuffer('CountyData(')
           ..write('id: $id, ')
-          ..write('iso: $iso, ')
           ..write('name: $name')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, iso, name);
+  int get hashCode => Object.hash(id, name);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is CountryData &&
-          other.id == this.id &&
-          other.iso == this.iso &&
-          other.name == this.name);
+      (other is CountyData && other.id == this.id && other.name == this.name);
 }
 
-class CountryDataCompanion extends UpdateCompanion<CountryData> {
+class CountyDataCompanion extends UpdateCompanion<CountyData> {
   final Value<int> id;
-  final Value<String> iso;
   final Value<String> name;
-  const CountryDataCompanion({
+  const CountyDataCompanion({
     this.id = const Value.absent(),
-    this.iso = const Value.absent(),
     this.name = const Value.absent(),
   });
-  CountryDataCompanion.insert({
+  CountyDataCompanion.insert({
     this.id = const Value.absent(),
-    required String iso,
     required String name,
-  })  : iso = Value(iso),
-        name = Value(name);
-  static Insertable<CountryData> custom({
+  }) : name = Value(name);
+  static Insertable<CountyData> custom({
     Expression<int>? id,
-    Expression<String>? iso,
     Expression<String>? name,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
-      if (iso != null) 'iso': iso,
       if (name != null) 'name': name,
     });
   }
 
-  CountryDataCompanion copyWith(
-      {Value<int>? id, Value<String>? iso, Value<String>? name}) {
-    return CountryDataCompanion(
+  CountyDataCompanion copyWith({Value<int>? id, Value<String>? name}) {
+    return CountyDataCompanion(
       id: id ?? this.id,
-      iso: iso ?? this.iso,
       name: name ?? this.name,
     );
   }
@@ -116,9 +98,6 @@ class CountryDataCompanion extends UpdateCompanion<CountryData> {
     if (id.present) {
       map['id'] = Variable<int>(id.value);
     }
-    if (iso.present) {
-      map['iso'] = Variable<String>(iso.value);
-    }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
     }
@@ -127,21 +106,20 @@ class CountryDataCompanion extends UpdateCompanion<CountryData> {
 
   @override
   String toString() {
-    return (StringBuffer('CountryDataCompanion(')
+    return (StringBuffer('CountyDataCompanion(')
           ..write('id: $id, ')
-          ..write('iso: $iso, ')
           ..write('name: $name')
           ..write(')'))
         .toString();
   }
 }
 
-class $CountriesTable extends Countries
-    with TableInfo<$CountriesTable, CountryData> {
+class $CountiesTable extends Counties
+    with TableInfo<$CountiesTable, CountyData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CountriesTable(this.attachedDatabase, [this._alias]);
+  $CountiesTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
@@ -149,35 +127,24 @@ class $CountriesTable extends Countries
       type: DriftSqlType.int,
       requiredDuringInsert: false,
       defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
-  final VerificationMeta _isoMeta = const VerificationMeta('iso');
-  @override
-  late final GeneratedColumn<String> iso = GeneratedColumn<String>(
-      'iso', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'name', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [id, iso, name];
+  List<GeneratedColumn> get $columns => [id, name];
   @override
-  String get aliasedName => _alias ?? 'countries';
+  String get aliasedName => _alias ?? 'counties';
   @override
-  String get actualTableName => 'countries';
+  String get actualTableName => 'counties';
   @override
-  VerificationContext validateIntegrity(Insertable<CountryData> instance,
+  VerificationContext validateIntegrity(Insertable<CountyData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
-    }
-    if (data.containsKey('iso')) {
-      context.handle(
-          _isoMeta, iso.isAcceptableOrUnknown(data['iso']!, _isoMeta));
-    } else if (isInserting) {
-      context.missing(_isoMeta);
     }
     if (data.containsKey('name')) {
       context.handle(
@@ -191,36 +158,34 @@ class $CountriesTable extends Countries
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  CountryData map(Map<String, dynamic> data, {String? tablePrefix}) {
+  CountyData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CountryData(
+    return CountyData(
       id: attachedDatabase.options.types
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      iso: attachedDatabase.options.types
-          .read(DriftSqlType.string, data['${effectivePrefix}iso'])!,
       name: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
     );
   }
 
   @override
-  $CountriesTable createAlias(String alias) {
-    return $CountriesTable(attachedDatabase, alias);
+  $CountiesTable createAlias(String alias) {
+    return $CountiesTable(attachedDatabase, alias);
   }
 }
 
 class CityData extends DataClass implements Insertable<CityData> {
   final int id;
   final String name;
-  final int countryId;
+  final int countyId;
   const CityData(
-      {required this.id, required this.name, required this.countryId});
+      {required this.id, required this.name, required this.countyId});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['name'] = Variable<String>(name);
-    map['country_id'] = Variable<int>(countryId);
+    map['county_id'] = Variable<int>(countyId);
     return map;
   }
 
@@ -228,7 +193,7 @@ class CityData extends DataClass implements Insertable<CityData> {
     return CityDataCompanion(
       id: Value(id),
       name: Value(name),
-      countryId: Value(countryId),
+      countyId: Value(countyId),
     );
   }
 
@@ -238,7 +203,7 @@ class CityData extends DataClass implements Insertable<CityData> {
     return CityData(
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String>(json['name']),
-      countryId: serializer.fromJson<int>(json['countryId']),
+      countyId: serializer.fromJson<int>(json['countyId']),
     );
   }
   @override
@@ -247,69 +212,69 @@ class CityData extends DataClass implements Insertable<CityData> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String>(name),
-      'countryId': serializer.toJson<int>(countryId),
+      'countyId': serializer.toJson<int>(countyId),
     };
   }
 
-  CityData copyWith({int? id, String? name, int? countryId}) => CityData(
+  CityData copyWith({int? id, String? name, int? countyId}) => CityData(
         id: id ?? this.id,
         name: name ?? this.name,
-        countryId: countryId ?? this.countryId,
+        countyId: countyId ?? this.countyId,
       );
   @override
   String toString() {
     return (StringBuffer('CityData(')
           ..write('id: $id, ')
           ..write('name: $name, ')
-          ..write('countryId: $countryId')
+          ..write('countyId: $countyId')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, name, countryId);
+  int get hashCode => Object.hash(id, name, countyId);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is CityData &&
           other.id == this.id &&
           other.name == this.name &&
-          other.countryId == this.countryId);
+          other.countyId == this.countyId);
 }
 
 class CityDataCompanion extends UpdateCompanion<CityData> {
   final Value<int> id;
   final Value<String> name;
-  final Value<int> countryId;
+  final Value<int> countyId;
   const CityDataCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
-    this.countryId = const Value.absent(),
+    this.countyId = const Value.absent(),
   });
   CityDataCompanion.insert({
     this.id = const Value.absent(),
     required String name,
-    required int countryId,
+    required int countyId,
   })  : name = Value(name),
-        countryId = Value(countryId);
+        countyId = Value(countyId);
   static Insertable<CityData> custom({
     Expression<int>? id,
     Expression<String>? name,
-    Expression<int>? countryId,
+    Expression<int>? countyId,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (name != null) 'name': name,
-      if (countryId != null) 'country_id': countryId,
+      if (countyId != null) 'county_id': countyId,
     });
   }
 
   CityDataCompanion copyWith(
-      {Value<int>? id, Value<String>? name, Value<int>? countryId}) {
+      {Value<int>? id, Value<String>? name, Value<int>? countyId}) {
     return CityDataCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
-      countryId: countryId ?? this.countryId,
+      countyId: countyId ?? this.countyId,
     );
   }
 
@@ -322,8 +287,8 @@ class CityDataCompanion extends UpdateCompanion<CityData> {
     if (name.present) {
       map['name'] = Variable<String>(name.value);
     }
-    if (countryId.present) {
-      map['country_id'] = Variable<int>(countryId.value);
+    if (countyId.present) {
+      map['county_id'] = Variable<int>(countyId.value);
     }
     return map;
   }
@@ -333,7 +298,7 @@ class CityDataCompanion extends UpdateCompanion<CityData> {
     return (StringBuffer('CityDataCompanion(')
           ..write('id: $id, ')
           ..write('name: $name, ')
-          ..write('countryId: $countryId')
+          ..write('countyId: $countyId')
           ..write(')'))
         .toString();
   }
@@ -356,15 +321,15 @@ class $CitiesTable extends Cities with TableInfo<$CitiesTable, CityData> {
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'name', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _countryIdMeta = const VerificationMeta('countryId');
+  final VerificationMeta _countyIdMeta = const VerificationMeta('countyId');
   @override
-  late final GeneratedColumn<int> countryId = GeneratedColumn<int>(
-      'country_id', aliasedName, false,
+  late final GeneratedColumn<int> countyId = GeneratedColumn<int>(
+      'county_id', aliasedName, false,
       type: DriftSqlType.int,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES countries (id)');
+      defaultConstraints: 'REFERENCES counties (id)');
   @override
-  List<GeneratedColumn> get $columns => [id, name, countryId];
+  List<GeneratedColumn> get $columns => [id, name, countyId];
   @override
   String get aliasedName => _alias ?? 'cities';
   @override
@@ -383,11 +348,11 @@ class $CitiesTable extends Cities with TableInfo<$CitiesTable, CityData> {
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
-    if (data.containsKey('country_id')) {
-      context.handle(_countryIdMeta,
-          countryId.isAcceptableOrUnknown(data['country_id']!, _countryIdMeta));
+    if (data.containsKey('county_id')) {
+      context.handle(_countyIdMeta,
+          countyId.isAcceptableOrUnknown(data['county_id']!, _countyIdMeta));
     } else if (isInserting) {
-      context.missing(_countryIdMeta);
+      context.missing(_countyIdMeta);
     }
     return context;
   }
@@ -402,8 +367,8 @@ class $CitiesTable extends Cities with TableInfo<$CitiesTable, CityData> {
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       name: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
-      countryId: attachedDatabase.options.types
-          .read(DriftSqlType.int, data['${effectivePrefix}country_id'])!,
+      countyId: attachedDatabase.options.types
+          .read(DriftSqlType.int, data['${effectivePrefix}county_id'])!,
     );
   }
 
@@ -1061,7 +1026,7 @@ class $NotificationEstateTypesTable extends NotificationEstateTypes
 
 abstract class _$LocalDatabase extends GeneratedDatabase {
   _$LocalDatabase(QueryExecutor e) : super(e);
-  late final $CountriesTable countries = $CountriesTable(this);
+  late final $CountiesTable counties = $CountiesTable(this);
   late final $CitiesTable cities = $CitiesTable(this);
   late final $NotificationsTable notifications = $NotificationsTable(this);
   late final $NotificationEstateTypesTable notificationEstateTypes =
@@ -1071,5 +1036,5 @@ abstract class _$LocalDatabase extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [countries, cities, notifications, notificationEstateTypes];
+      [counties, cities, notifications, notificationEstateTypes];
 }

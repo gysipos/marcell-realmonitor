@@ -1,6 +1,6 @@
 import 'package:realmonitor/data/datasources/local/database/local_database.dart';
 import 'package:realmonitor/data/datasources/models/city_model.dart';
-import 'package:realmonitor/data/datasources/models/country_model.dart';
+import 'package:realmonitor/data/datasources/models/county_model.dart';
 import 'package:realmonitor/data/datasources/remote/dto/notifications_dto.dart';
 import 'package:realmonitor/domain/entities/assignment_type.dart';
 import 'package:realmonitor/domain/entities/city.dart';
@@ -47,10 +47,10 @@ class NotificationModel implements Notification {
       );
 
   factory NotificationModel.fromDto(NotificationDto dto) {
-    final country =
-        CountryModel(0, '', dto.locations.first.adminLevels!.values.first);
+    final county =
+        CountyModel(0, dto.locations.first.adminLevels!.values.first);
     final city = CityModel(
-        0, dto.locations.first.adminLevels!.values.elementAt(1), country);
+        0, dto.locations.first.adminLevels!.values.elementAt(1), county);
     return NotificationModel(
       dto.id,
       dto.name!,

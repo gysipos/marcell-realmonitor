@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:realmonitor/data/datasources/local/schema/cities.dart';
-import 'package:realmonitor/data/datasources/local/schema/countries.dart';
+import 'package:realmonitor/data/datasources/local/schema/counties.dart';
 import 'package:realmonitor/data/datasources/local/schema/notifications.dart';
 import 'package:realmonitor/domain/entities/assignment_type.dart';
 import 'package:realmonitor/domain/entities/estate_type.dart';
@@ -10,7 +10,7 @@ part 'local_database.g.dart';
 @DriftDatabase(
   tables: [
     Cities,
-    Countries,
+    Counties,
     Notifications,
     NotificationEstateTypes,
   ],

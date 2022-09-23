@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:realmonitor/data/datasources/local/database/local_database.dart';
 import 'package:realmonitor/data/datasources/models/city_model.dart';
-import 'package:realmonitor/data/datasources/models/country_model.dart';
+import 'package:realmonitor/data/datasources/models/county_model.dart';
 import 'package:realmonitor/data/datasources/models/notification_model.dart';
 import 'package:realmonitor/domain/entities/estate_type.dart';
 import 'package:realmonitor/domain/entities/notification.dart';
@@ -19,7 +19,7 @@ class NotificationsDao extends DatabaseAccessor<LocalDatabase>
 
     final query = select(db.notifications).join([
       innerJoin(db.cities, db.cities.id.equalsExp(db.notifications.cityId)),
-      innerJoin(db.countries, db.countries.id.equalsExp(db.cities.countryId)),
+      innerJoin(db.counties, db.counties.id.equalsExp(db.cities.countyId)),
       innerJoin(
         db.notificationEstateTypes,
         db.notificationEstateTypes.notificationId
@@ -31,8 +31,8 @@ class NotificationsDao extends DatabaseAccessor<LocalDatabase>
       ..groupBy([db.notifications.id]);
 
     return query.map((row) {
-      final country = CountryModel.fromData(row.readTable(db.countries));
-      final city = CityModel.fromData(row.readTable(db.cities), country);
+      final county = CountyModel.fromData(row.readTable(db.counties));
+      final city = CityModel.fromData(row.readTable(db.cities), county);
       final notification = row.readTable(db.notifications);
       final types = row
           .read(estateTypes)!
